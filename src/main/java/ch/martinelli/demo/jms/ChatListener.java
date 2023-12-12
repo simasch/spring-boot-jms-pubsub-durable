@@ -16,7 +16,7 @@ public class ChatListener {
     @JmsListener(destination = "${chat.topic}",
             selector = "user <> '${chat.user}'",
             containerFactory = "artemisConnectionFactory",
-            subscription = "sub-${chat.user}")
+            subscription = "chat")
     public void onMessage(Message message) throws JMSException {
         if (message instanceof TextMessage textMessage) {
             String sender = message.getStringProperty("user");
